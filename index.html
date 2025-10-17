@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRM Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="login-form" style="display: none;">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Tên Đăng Nhập" required>
+                <input type="password" id="password" placeholder="Mật Khẩu" required>
+                <button type="submit">Đăng Nhập</button>
+            </form>
+            <button id="registerBtn">Đăng Ký</button>
+        </div>
+        <div id="dashboard">
+            <nav id="menu">
+                <ul>
+                    <li><a href="#" data-module="addEmployee">Thêm Nhân Viên</a></li>
+                    <li><a href="#" data-module="editEmployee">Sửa Thông Tin Nhân Viên</a></li>
+                    <li><a href="#" data-module="deleteEmployee">Xóa Thông Tin Nhân Viên</a></li>
+                    <li><a href="#" data-module="searchEmployee">Tìm Kiếm Nhân Viên</a></li>
+                    <li><a href="#" data-module="department">Quản Lý Phòng Ban</a></li>
+                    <li><a href="#" data-module="position">Quản Lý Chức Vụ</a></li>
+                    <li><a href="#" data-module="salary">Quản Lý Lương</a></li>
+                    <li><a href="#" data-module="attendance">Chấm Công</a></li>
+                    <li><a href="#" data-module="leave">Quản Lý Nghỉ Phép</a></li>
+                    <li><a href="#" data-module="performance">Đánh Giá Hiệu Suất</a></li>
+                    <li><a href="#" id="logout">Đăng Xuất</a></li>
+                </ul>
+            </nav>
+            <div id="content"></div>
+        </div>
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
