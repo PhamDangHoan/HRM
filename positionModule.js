@@ -120,7 +120,7 @@ function displayTable(container) {
                         <td><strong>${p.id}</strong></td>
                         <td>${p.title}</td>
                         <td>${p.description}</td>
-                        <td><strong>${p.salaryBase.toLocaleString()}đ</strong></td>
+                        <td><strong>${p.salaryBase.toLocaleString()}$</strong></td>
                         <td><span class="badge">${empCount}</span></td>
                         <td>
                             <button class="edit-btn" onclick="editPos(${p.id})">✏️ Sửa</button>

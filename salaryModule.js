@@ -64,15 +64,15 @@ function displayReport(container) {
                 <p>Tổng NV</p>
             </div>
             <div class="stat-card">
-                <h3>${stats.avgSalary.toLocaleString()}đ</h3>
+                <h3>${stats.avgSalary.toLocaleString()}$</h3>
                 <p>Lương TB</p>
             </div>
             <div class="stat-card">
-                <h3>${stats.totalBonus.toLocaleString()}đ</h3>
+                <h3>${stats.totalBonus.toLocaleString()}$</h3>
                 <p>Tổng thưởng</p>
             </div>
             <div class="stat-card">
-                <h3>${total.toLocaleString()}đ</h3>
+                <h3>${total.toLocaleString()}$</h3>
                 <p>Tổng lương</p>
             </div>
         </div>
@@ -96,13 +96,13 @@ function displayReport(container) {
                             <td>${r.realSalary.toLocaleString()}</td>
                             <td style="color:green">+${r.bonus.toLocaleString()}</td>
                             <td style="color:red">-${r.deduction.toLocaleString()}</td>
-                            <td><strong>${r.netSalary.toLocaleString()}đ</strong></td>
+                            <td><strong>${r.netSalary.toLocaleString()}$</strong></td>
                         </tr>
                     `;
                 }).join('')}
             </tbody>
             <tfoot>
-                <tr><td colspan="6"><strong>TỔNG</strong></td><td><strong>${total.toLocaleString()}đ</strong></td></tr>
+                <tr><td colspan="6"><strong>TỔNG</strong></td><td><strong>${total.toLocaleString()}$</strong></td></tr>
             </tfoot>
         </table>
         
@@ -114,7 +114,7 @@ function displayReport(container) {
                     <div class="dept-bar">
                         <span>${dept?.name || deptId}</span>
                         <div class="bar" style="width: ${Math.min(amount/total*100, 100)}%">
-                            ${amount.toLocaleString()}đ
+                            ${amount.toLocaleString()}$
                         </div>
                     </div>
                 `;
@@ -150,7 +150,7 @@ function createUpdateForm(container) {
             const updated = { ...emp, bonus, deduction };
             EmployeeDb.updateEmployee(updated);
             
-            alert(`✅ Cập nhật thành công!\nThưởng: +${bonus.toLocaleString()}đ\nKhấu trừ: -${deduction.toLocaleString()}đ`);
+            alert(`✅ Cập nhật thành công!\nThưởng: +${bonus.toLocaleString()}$\nKhấu trừ: -${deduction.toLocaleString()}$`);
             form.reset();
             init(container);                              // REFRESH REPORT
         } catch (e) {

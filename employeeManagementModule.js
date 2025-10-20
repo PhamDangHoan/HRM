@@ -37,7 +37,7 @@ function displayEmployeeList(container) {
                         <td>${emp.name}</td>
                         <td>${dept?.name || 'N/A'}</td>
                         <td>${pos?.title || 'N/A'}</td>
-                        <td><strong>${realSalary.toLocaleString()}đ</strong></td>
+                        <td><strong>${realSalary.toLocaleString()}$</strong></td>
                         <td>${emp.hireDate}</td>
                         <td>
                             <button class="edit-btn" data-id="${emp.id}">✏️ Sửa</button>
@@ -114,7 +114,7 @@ function showForm(container, id = null) {
             <option value="">Chọn vị trí</option>
             ${Position.getAllPositions().map(p => `
                 <option value="${p.id}" ${emp && p.id === emp.positionId ? 'selected' : ''}>
-                    ${p.title} (${p.salaryBase.toLocaleString()}đ)
+                    ${p.title} (${p.salaryBase.toLocaleString()}$)
                 </option>
             `).join('')}
         </select>

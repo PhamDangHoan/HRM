@@ -140,8 +140,8 @@ function displayResults(results, container) {
         <div class="results-header">
             <h3>✅ Kết quả tìm kiếm (<strong>${results.length}</strong> NV)</h3>
             <div class="stats">
-                <span>💰 Tổng lương: ${totalSalary.toLocaleString()}đ</span>
-                <span>📊 TB: ${avgSalary.toLocaleString()}đ</span>
+                <span>💰 Tổng lương: ${totalSalary.toLocaleString()}$</span>
+                <span>📊 TB: ${avgSalary.toLocaleString()}$</span>
             </div>
         </div>
         
@@ -164,7 +164,7 @@ function displayResults(results, container) {
                             <td>${emp.name}</td>
                             <td>${dept?.name || 'N/A'}</td>
                             <td>${pos?.title || 'N/A'}</td>
-                            <td><strong>${realSalary.toLocaleString()}đ</strong></td>
+                            <td><strong>${realSalary.toLocaleString()}$</strong></td>
                             <td>${emp.hireDate}</td>
                             <td>
                                 <button class="edit-btn" onclick="editEmployee(${emp.id})">✏️</button>
