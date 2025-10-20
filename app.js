@@ -1,8 +1,6 @@
 import * as Auth from './authModule.js';
 import * as EmployeeDb from './employeeDbModule.js';
-import * as AddEmployee from './addEmployeeModule.js';
-import * as EditEmployee from './editEmployeeModule.js';
-import * as DeleteEmployee from './deleteEmployeeModule.js';
+import * as EmployeeManagement from './employeeManagementModule.js';
 import * as SearchEmployee from './searchEmployeeModule.js';
 import * as Department from './departmentModule.js';
 import * as Position from './positionModule.js';
@@ -12,9 +10,7 @@ import * as Leave from './leaveModule.js';
 import * as Performance from './performanceModule.js';
 
 const modules = {
-    addEmployee: AddEmployee,
-    editEmployee: EditEmployee,
-    deleteEmployee: DeleteEmployee,
+    employeeManagement: EmployeeManagement,
     searchEmployee: SearchEmployee,
     department: Department,
     position: Position,
@@ -22,6 +18,11 @@ const modules = {
     attendance: Attendance,
     leave: Leave,
     performance: Performance
+};
+
+window.onerror = function (message, source, lineno, colno, error) {
+    console.error('Global error:', message);
+    alert('Đã xảy ra lỗi: ' + message);
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -51,14 +52,15 @@ function setupMenu() {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const moduleName = link.dataset.module;
-            link.classList.add('active'); // Highlight
+            document.querySelectorAll('#sidebar a').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
             loadModule(moduleName);
         });
     });
 }
 
 function loadModule(moduleName) {
-    console.log('Loading module:', moduleName); // ✅ DEBUG
+    console.log('Loading module:', moduleName);
     const mainContent = document.getElementById('main-content');
     mainContent.innerHTML = '';
     if (!modules[moduleName] || typeof modules[moduleName].init !== 'function') {
@@ -67,13 +69,14 @@ function loadModule(moduleName) {
     }
     try {
         modules[moduleName].init(mainContent);
-        console.log('✅ Module loaded:', moduleName); // ✅ DEBUG
+        console.log('✅ Module loaded:', moduleName);
     } catch (error) {
         console.error('❌ Error loading module:', moduleName, error);
         mainContent.innerHTML = `<p>Lỗi: ${error.message}</p>`;
     }
 }
 
+// ✅ FIXED: EXPORT 2 HÀM NÀY CHO CÁC MODULE DÙNG
 export function refreshDashboard() {
     const activeLink = document.querySelector('#sidebar a.active');
     if (activeLink) {

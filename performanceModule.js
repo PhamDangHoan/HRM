@@ -1,4 +1,4 @@
-import * as EmployeeDb from './employeeDbModule.js';  // ✅ THÊM DÒNG NÀY
+import * as EmployeeDb from './employeeDbModule.js';
 
 const STORAGE_KEY = 'reviews';
 
@@ -25,58 +25,66 @@ export function getAverageRating(employeeId) {
 }
 
 function getTopPerformers() {
-    const employees = EmployeeDb.getAllEmployees();  // ✅ BÂY GIỜ ĐÚNG!
+    const employees = EmployeeDb.getAllEmployees();
     return employees.map(emp => ({ ...emp, avg: getAverageRating(emp.id) }))
         .sort((a, b) => b.avg - a.avg);
 }
 
 function displayReport(container) {
+    // ✅ CLEAR TRƯỚC KHI HIỂN BẢNG
+    const reportDiv = document.createElement('div');
+    reportDiv.innerHTML = '<h3>🏆 Top Performers</h3>';
+    
     const tops = getTopPerformers();
     const table = document.createElement('table');
     table.innerHTML = `
-        <h3>🏆 Top Performers</h3>
-        <thead><tr><th>ID</th><th>Tên</th><th>Điểm TB</th><th>Reviews</th></tr></thead>
+        <thead><tr><th>ID</th><th>Tên</th><th>Điểm TB</th><th>Số Reviews</th></tr></thead>
         <tbody>${
-            tops.map(t => `<tr>
-                <td>${t.id}</td>
-                <td>${t.name}</td>
-                <td><strong>${t.avg.toFixed(2)}</strong></td>
-                <td>${getReviews().filter(r => r.employeeId === t.id).length}</td>
-            </tr>`).join('')
+            tops.length > 0 ? 
+            tops.map(t => `
+                <tr>
+                    <td>${t.id}</td>
+                    <td>${t.name}</td>
+                    <td>${t.avg.toFixed(2)}</td>
+                    <td>${getReviews().filter(r => r.employeeId === t.id).length}</td>
+                </tr>
+            `).join('') : 
+            '<tr><td colspan="4" style="text-align:center;">Chưa có đánh giá nào</td></tr>'
         }</tbody>
     `;
-    container.appendChild(table);
+    reportDiv.appendChild(table);
+    container.appendChild(reportDiv);
 }
 
 export function init(container) {
-    // ✅ BƯỚC 1: TẠO FORM
+    // ✅ CLEAR CONTAINER TRƯỚC
+    container.innerHTML = '<h2>Đánh giá Hiệu suất</h2>';
+    
+    // ✅ HIỂN BẢNG TRƯỚC
+    displayReport(container);
+    
+    // ✅ FORM THÊM SAU
     const form = document.createElement('form');
     form.innerHTML = `
-        <h2>Đánh giá Hiệu suất</h2>
+        <h3>Thêm Đánh Giá</h3>
         <input type="number" id="empId" placeholder="ID Nhân viên" required>
         <input type="number" id="rating" placeholder="Điểm (1-5)" min="1" max="5" required>
         <input type="text" id="feedback" placeholder="Phản hồi" required>
         <button type="submit">Thêm Đánh giá</button>
     `;
-    
-    // ✅ BƯỚC 2: APPEND FORM
     container.appendChild(form);
     
-    // ✅ BƯỚC 3: DISPLAY REPORT TRƯỚC
-    displayReport(container);
-    
-    // ✅ BƯỚC 4: EVENT LISTENER
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         try {
-            const id = parseInt(form.querySelector('#empId').value);
-            const rating = parseInt(form.querySelector('#rating').value);
-            const feedback = form.querySelector('#feedback').value;
-            
+            const id = parseInt(document.getElementById('empId').value);
+            const rating = parseInt(document.getElementById('rating').value);
+            const feedback = document.getElementById('feedback').value;
             addReview(id, rating, feedback);
             alert('✅ Thêm thành công!');
             form.reset();
-            displayReport(container); // Refresh table
+            // ✅ REFRESH: CLEAR + RE-INIT ĐỂ KHÔNG TRÙNG
+            init(container);
         } catch (e) {
             alert('❌ ' + e.message);
         }

@@ -7,7 +7,7 @@ export function init(container) {
     const form = document.createElement('form');
     form.innerHTML = `
         <h2>Tìm kiếm Nhân viên</h2>
-        <input type="text" id="name" placeholder="Tên (regex)">
+        <input type="text" id="name" placeholder="Tên">
         <select id="departmentId">
             <option value="">Tất cả</option>
             ${Department.getAllDepartments().map(d => `<option value="${d.id}">${d.name}</option>`).join('')}
