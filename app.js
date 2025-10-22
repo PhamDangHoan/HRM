@@ -1,14 +1,14 @@
 // TỔNG HỢP + ROUTING + ERROR HANDLING + GLOBAL FUNCTIONS
-import * as Auth from './authModule.js';                    // XÁC THỰC NGƯỜI DÙNG
-import * as EmployeeDb from './employeeDbModule.js';       // DATABASE NHÂN VIỆN
-import * as EmployeeManagement from './employeeManagementModule.js';  // QUẢN LÝ NHÂN VIỆN
-import * as SearchEmployee from './searchEmployeeModule.js';         //  TÌM KIẾM NHÂN VIỆN
-import * as Department from './departmentModule.js';       //  PHÒNG BAN
-import * as Position from './positionModule.js';           // VỊ TRÍ
-import * as Salary from './salaryModule.js';               //  LƯƠNG THƯỞNG
-import * as Attendance from './attendanceModule.js';       //  CHẤM CÔNG
-import * as Leave from './leaveModule.js';                 //  NGHỈ PHÉP
-import * as Performance from './performanceModule.js';     //  ĐÁNH GIÁ HIỆU SUẤT
+import * as Auth from './Module/authModule.js';                    // XÁC THỰC NGƯỜI DÙNG
+import * as EmployeeDb from './Module/employeeDbModule.js';       // DATABASE NHÂN VIỆN
+import * as EmployeeManagement from './Module/employeeManagementModule.js';  // QUẢN LÝ NHÂN VIỆN
+import * as SearchEmployee from './Module/searchEmployeeModule.js';         //  TÌM KIẾM NHÂN VIỆN
+import * as Department from './Module/departmentModule.js';       //  PHÒNG BAN
+import * as Position from './Module/positionModule.js';           // VỊ TRÍ
+import * as Salary from './Module/salaryModule.js';               //  LƯƠNG THƯỞNG
+import * as Attendance from './Module/attendanceModule.js';       //  CHẤM CÔNG
+import * as Leave from './Module/leaveModule.js';                 //  NGHỈ PHÉP
+import * as Performance from './Module/performanceModule.js';     //  ĐÁNH GIÁ HIỆU SUẤT
 
 //  MODULE REGISTRY: DANH SÁCH TẤT CẢ MODULES (ROUTING MAP)
 const modules = {
