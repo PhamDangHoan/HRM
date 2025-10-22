@@ -1,5 +1,5 @@
 // CRUD: CheckIn/Out + Báo cáo giờ làm + LocalStorage
-import * as EmployeeDb from './employeeDbModule.js';      // 🔍 VALIDATE: Employee tồn tại?
+import * as EmployeeDb from './employeeDbModule.js';      //  VALIDATE: Employee tồn tại?
 
 //  LOCALSTORAGE CONFIG: LƯU TRỮ DỮ LIỆU CHẤM CÔNG
 const STORAGE_KEY = 'attendance';                        // KEY: 'attendance' trong localStorage

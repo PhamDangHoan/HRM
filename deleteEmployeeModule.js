@@ -1,9 +1,9 @@
 //  DELETE EMPLOYEE MODULE - XÓA NHÂN VIỆN AN TOÀN
 // VALIDATE + MANAGER CHECK + CONFIRM + CASCADE REFRESH
 
-import * as EmployeeDb from './employeeDbModule.js';      // 💾 CRUD Employee DB
-import * as Department from './departmentModule.js';     // 🏢 Check Manager role
-import { refreshDashboard } from './app.js';             // 🔄 Auto refresh UI
+import * as EmployeeDb from './employeeDbModule.js';      //  CRUD Employee DB
+import * as Department from './departmentModule.js';     //  Check Manager role
+import { refreshDashboard } from './app.js';             //  Auto refresh UI
 
 //  INIT: KHỞI TẠO MODULE (GỌI TỪ app.js)
 export function init(container) {

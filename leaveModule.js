@@ -1,10 +1,10 @@
 // REQUEST + APPROVE + BALANCE + OVERLAP CHECK + DAY CALCULATION
 
-import * as EmployeeDb from './employeeDbModule.js';      // 👥 Validate Employee
+import * as EmployeeDb from './employeeDbModule.js';      //  Validate Employee
 
-const STORAGE_KEY = 'leaves';                            // 💾 Leave requests
-const BALANCE_KEY = 'leaveBalances';                     // 💾 Leave balances
-const DEFAULT_BALANCE = { annual: 20, sick: 10 };        // 📅 Default: 20 thường niên + 10 ốm
+const STORAGE_KEY = 'leaves';                            //  Leave requests
+const BALANCE_KEY = 'leaveBalances';                     //  Leave balances
+const DEFAULT_BALANCE = { annual: 20, sick: 10 };        //  Default: 20 thường niên + 10 ốm
 
 //  LEAVE STORAGE: CRUD OPERATIONS
 function getLeaves() {

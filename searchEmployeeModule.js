@@ -1,9 +1,11 @@
 // MULTI-FILTER + LIVE SEARCH + SORT + EXPORT CSV + REAL SALARY + STATS
+// REMOVED: Edit/Salary buttons in results table
 
-import * as EmployeeDb from './employeeDbModule.js';      // 👥 Employee data
-import * as Department from './departmentModule.js';     // 🏢 Department names
-import * as Position from './positionModule.js';         // 💼 Position lookup
-import { filterEmployees, sortEmployees } from './employeeDbModule.js'; // 🔧 Utilities
+import * as EmployeeDb from './employeeDbModule.js';      //  Employee data
+import * as Department from './departmentModule.js';     //  Department names
+import * as Position from './positionModule.js';         //  Position lookup
+import { filterEmployees, sortEmployees } from './employeeDbModule.js'; //  Utilities
+
 
 //  INIT: LIVE SEARCH FORM + RESULTS TABLE
 export function init(container) {
@@ -105,7 +107,7 @@ function performSearch(form, resultsDiv) {
             const hireMatch = (!hireFrom || emp.hireDate >= hireFrom) && 
                              (!hireTo || emp.hireDate <= hireTo);
             
-            //  REAL SALARY: base * deptLevel
+            // 🔥 REAL SALARY: base * deptLevel
             const pos = Position.getAllPositions().find(p => p.id === emp.positionId);
             const dept = Department.getAllDepartments().find(d => d.id === emp.departmentId);
             const baseSalary = pos ? pos.salaryBase : emp.salary;
@@ -127,7 +129,7 @@ function performSearch(form, resultsDiv) {
     }
 }
 
-//  DISPLAY RESULTS: TABLE + STATS + ACTIONS
+//  DISPLAY RESULTS: TABLE + STATS (NO ACTIONS)
 function displayResults(results, container) {
     const deptNames = Department.getAllDepartments();
     const posNames = Position.getAllPositions();
@@ -150,7 +152,7 @@ function displayResults(results, container) {
             <thead>
                 <tr>
                     <th>ID</th><th>Tên</th><th>PB</th><th>VT</th>
-                    <th>Lương thực tế</th><th>Ngày vào</th><th>Actions</th>
+                    <th>Lương thực tế</th><th>Ngày vào</th>
                 </tr>
             </thead>
             <tbody>
@@ -166,10 +168,6 @@ function displayResults(results, container) {
                             <td>${pos?.title || 'N/A'}</td>
                             <td><strong>${realSalary.toLocaleString()}$</strong></td>
                             <td>${emp.hireDate}</td>
-                            <td>
-                                <button class="edit-btn" onclick="editEmployee(${emp.id})">✏️</button>
-                                <button class="salary-btn" onclick="viewSalary(${emp.id})">💰</button>
-                            </td>
                         </tr>
                     `;
                 }).join('')}
@@ -186,6 +184,7 @@ function calculateRealSalary(emp) {
     const baseSalary = pos ? pos.salaryBase : emp.salary;
     return Math.round(baseSalary * (dept?.level || 1));
 }
+
 
 //  SORT RESULTS: CLIENT-SIDE RE-SORT
 function sortResults(container, field, direction) {
@@ -243,6 +242,3 @@ function exportToCsv(container) {
     alert(`✅ Xuất ${rows.length} dòng thành công!`);
 }
 
-// ═══ GLOBAL FUNCTIONS (for onclick) ═══
-window.editEmployee = (id) => import('./employeeManagement.js').then(m => m.showForm(document.getElementById('main-content'), id));
-window.viewSalary = (id) => alert(`💰 Lương NV ${id}: ${calculateRealSalary(EmployeeDb.getEmployeeById(id)).toLocaleString()}đ`);

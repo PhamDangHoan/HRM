@@ -1,17 +1,17 @@
 //  AUTH MODULE - HỆ THỐNG ĐĂNG NHẬP/ĐĂNG KÝ HOÀN CHỈNH
 // LocalStorage + Hashing + Session + Validation + UI Toggle
 
-const USERS_KEY = 'users';                               // 💾 KEY: Lưu danh sách users
-const SESSION_KEY = 'session';                           // 💾 KEY: Lưu session hiện tại
-const EXPIRY_HOURS = 1;                                  // ⏰ SESSION hết hạn: 1 giờ
+const USERS_KEY = 'users';                               //  KEY: Lưu danh sách users
+const SESSION_KEY = 'session';                           //  KEY: Lưu session hiện tại
+const EXPIRY_HOURS = 1;                                  // SESSION hết hạn: 1 giờ
 
 //  PASSWORD HASHER: CLOSURE + SALT + BASE64 (SIMPLE SECURITY)
 const createHasher = () => {
-    const salt = 'secretSalt';                           // 🧂 SALT: Bí mật (hardcode cho demo)
-    return (password) => btoa(password + salt);          // 🔐 HASH: password + salt → Base64
+    const salt = 'secretSalt';                           //  SALT: Bí mật (hardcode cho demo)
+    return (password) => btoa(password + salt);          //  HASH: password + salt → Base64
 };
 
-const hashPassword = createHasher();                     // 🏭 FACTORY: Tạo hasher instance
+const hashPassword = createHasher();                     //  FACTORY: Tạo hasher instance
 
 //  VALIDATION FUNCTIONS: KIỂM TRA INPUT
 // VALIDATE PASSWORD: ≥6 ký tự, KHÔNG khoảng trắng

@@ -18,7 +18,7 @@ function initData() {
         console.log('✅ Default 5 positions created');
     }
 }
-initData();                                              // 🔥 AUTO RUN
+initData();                                              // AUTO RUN
 
 //  STORAGE: SAFE GET/SAVE (ASYNC)
 function getAllPositions() {

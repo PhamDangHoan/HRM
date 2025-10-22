@@ -1,8 +1,8 @@
 // BONUS + DEDUCTION + NET CALC + PAYROLL REPORT + BULK UPDATE + CHARTS
 
-import * as EmployeeDb from './employeeDbModule.js';      // 👥 Employee CRUD
-import * as Department from './departmentModule.js';     // 🏢 Dept level lookup
-import * as Position from './positionModule.js';         // 💼 Position base lookup
+import * as EmployeeDb from './employeeDbModule.js';      //  Employee CRUD
+import * as Department from './departmentModule.js';     //  Dept level lookup
+import * as Position from './positionModule.js';         //  Position base lookup
 
 //  CORE CALCULATION: NET SALARY (REAL + BONUS - DEDUCTION)
 export function calculateNetSalary(employee) {

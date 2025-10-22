@@ -1,9 +1,9 @@
 // TABLE VIEW + ADD/EDIT FORM + DYNAMIC SALARY + VALIDATION + ACTIONS
 
-import * as EmployeeDb from './employeeDbModule.js';      // 💾 Employee CRUD
-import * as Department from './departmentModule.js';     // 🏢 Department lookup
-import * as Position from './positionModule.js';         // 💼 Position lookup
-import { refreshDashboard, debounce } from './app.js';   // 🔄 Refresh + Debounce
+import * as EmployeeDb from './employeeDbModule.js';      //  Employee CRUD
+import * as Department from './departmentModule.js';     //  Department lookup
+import * as Position from './positionModule.js';         //  Position lookup
+import { refreshDashboard, debounce } from './app.js';   //  Refresh + Debounce
 
 let editingId = null;                                    // GLOBAL: Track edit mode
 

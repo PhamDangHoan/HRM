@@ -9,9 +9,9 @@ const STORAGE_KEY = 'departments';                       // 💾 LocalStorage ke
 function initData() {
     if (!localStorage.getItem(STORAGE_KEY)) {
         const defaults = [
-            { id: 1, name: 'IT', managerId: 1, level: 1.5 },     // 💻 IT: +50% lương
-            { id: 2, name: 'HR', managerId: 2, level: 1.2 },     // 👥 HR: +20% lương
-            { id: 3, name: 'Finance', managerId: 3, level: 1.7 } // 💰 Finance: +70% lương
+            { id: 1, name: 'IT', managerId: 1, level: 1.5 },     //  IT: +50% lương
+            { id: 2, name: 'HR', managerId: 2, level: 1.2 },     //  HR: +20% lương
+            { id: 3, name: 'Finance', managerId: 3, level: 1.7 } //  Finance: +70% lương
         ];
         saveDepartments(defaults);
         console.log('✅ Default departments created');
